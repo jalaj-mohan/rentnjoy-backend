@@ -1,5 +1,5 @@
 <?php
-include_once 'db.php';
+include_once 'config.php';
 $reqdata = json_decode(file_get_contents("php://input"),true);
 if($reqdata["apikey"] == "someapikey"){
     

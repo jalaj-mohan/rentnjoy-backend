@@ -1,6 +1,8 @@
 <?php
 include_once 'razorpay/Razorpay.php';
-$api = new Api("<YOUR_KEY_ID>", "<YOUR_KEY_SECRET>");
+include_once 'config.php';
+
+$api = new Api($razorpay_api_key, $razorpay_api_secret);
 $verify = $api->utility->verifyWebhookSignature(
     $webhookBody,
     $webhookSignature, 

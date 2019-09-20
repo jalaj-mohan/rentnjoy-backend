@@ -10,4 +10,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+$razorpay_api_key= "";
+$razorpay_api_secret = "";
+
 ?>
