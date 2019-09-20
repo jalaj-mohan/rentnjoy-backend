@@ -1,6 +1,6 @@
 <?php
 include_once 'db.php';
-
+$reqdata = json_decode(file_get_contents("php://input"),true);
 if($reqdata["apikey"] == "someapikey"){
     
   $user1 = $reqdata["user1"];
@@ -11,15 +11,15 @@ if($reqdata["apikey"] == "someapikey"){
   $pid = $reqdata["product_id"];
   $cartid = $reqdata["cart_id"];
 
-  $sql = "INSERT INTO orders (user1, user2, user3,user4,user5,product_id,payment_status,admin_verification)
+  $sql = "INSERT INTO cart (user1, user2, user3,user4,user5,product_id,payment_status,admin_verification)
   VALUES ($user1.$user2,$user3,$user4,$user5,$pid,0,0)"
 if (mysqli_query($conn, $sql)) {
   $last_id = mysqli_insert_id($conn);
   $del = "DELETE FROM cart WHERE id=".$cartid."";
   mysqli_query($conn, $sql);
-  echo '{ "message" : "Order Placed", "type": "success", "id":'.$last_id.'}';
+  echo '{ "message" : "Added to cart", "type": "success", "id":'.$last_id.'}';
 } else {
-    echo '{ "message" : "Unable to order", "type": "failed"}';
+    echo '{ "message" : "Unable to add to cart", "type": "failed"}';
 }
 }
 else{

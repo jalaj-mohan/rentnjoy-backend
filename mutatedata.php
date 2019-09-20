@@ -1,14 +1,13 @@
 <?php
 include_once 'db.php';
-
+$reqdata = json_decode(file_get_contents("php://input"),true);
 if($reqdata["apikey"] == "someapikey"){
   $sql = $reqdata["sql"];
   
 if (mysqli_query($conn, $sql)) {
-  $last_id = mysqli_insert_id($conn);
-  echo '{ "message" : "Data Inserted", "type": "success", "id":'.$last_id.'}';
+  echo '{ "message" : "Data Mutated", "type": "success"}';
 } else {
-    echo '{ "message" : "Unable to insert", "type": "failed"}';
+    echo '{ "message" : "Unable to mutate", "type": "failed"}';
 }
 }
 else{

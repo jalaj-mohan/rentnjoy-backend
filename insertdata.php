@@ -1,13 +1,14 @@
 <?php
 include_once 'db.php';
-
+$reqdata = json_decode(file_get_contents("php://input"),true);
 if($reqdata["apikey"] == "someapikey"){
   $sql = $reqdata["sql"];
   
 if (mysqli_query($conn, $sql)) {
-  echo '{ "message" : "Data Updated", "type": "success"}';
+  $last_id = mysqli_insert_id($conn);
+  echo '{"type": "success", "id":'.$last_id.'}';
 } else {
-    echo '{ "message" : "Unable to update", "type": "failed"}';
+    echo '{ "message" : "Unable to execute", "type": "failed"}';
 }
 }
 else{
