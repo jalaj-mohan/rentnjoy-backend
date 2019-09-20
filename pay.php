@@ -14,3 +14,5 @@ include_once 'razorpay/Razorpay.php';
 else{
 	echo '{ "message" : "Wrong api key", "type": "failed"}';
 }
+
+?>
