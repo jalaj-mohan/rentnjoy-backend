@@ -12,7 +12,7 @@ if($reqdata["apikey"] == "someapikey"){
   $cartid = $reqdata["cart_id"];
 
   $sql = "INSERT INTO cart (user1, user2, user3,user4,user5,product_id,payment_status,admin_verification)
-  VALUES ($user1.$user2,$user3,$user4,$user5,$pid,0,0)"
+  VALUES ($user1.$user2,$user3,$user4,$user5,$pid,0,0)";
 if (mysqli_query($conn, $sql)) {
   $last_id = mysqli_insert_id($conn);
   $del = "DELETE FROM cart WHERE id=".$cartid."";
